@@ -1,0 +1,187 @@
+/* ===== Global Reset & Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
+  min-height: 100vh;
+  padding: 0px;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+/* ===== App Layout Container ===== */
+.app-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+
+/* ===== Header ===== */
+.app-header {
+  width: 100vw;
+  background-color: #0d1b2a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+.app-header h1 {
+  font-size: 1.4rem;
+}
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.user-profile span {
+  font-size: 0.9rem;
+}
+.user-profile img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+#signout-btn {
+  padding: 6px 12px;
+  border: none;
+  background: #fff;
+  color: #111;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+/* ===== Tabs ===== */
+.stage-tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px;
+  border-radius: 8px;
+}
+.stage-tabs .tab {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.stage-tabs .tab:hover,
+.stage-tabs .tab.active {
+  background: #fff;
+  color: #111;
+}
+
+/* ===== Task Input Row ===== */
+.task-input {
+  display: flex;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+#new-task {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 0.9rem;
+}
+#new-task::placeholder {
+  color: #bbb;
+}
+#add-task-btn {
+  padding: 10px 20px;
+  background: #2e8bff;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+#add-task-btn:hover {
+  background: #1c7cff;
+}
+
+/* ===== Task List ===== */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ===== Individual Task Card ===== */
+.task-item {
+  background: rgba(220, 220, 220, 0.1);
+  border: 1px solid rgba(160, 160, 160, 0.4);
+  border-radius: 10px;
+  padding: 16px 20px;
+  position: relative;
+}
+
+/* ===== Title + Timestamp Layout ===== */
+.task-item h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.timestamp {
+  font-size: 0.75rem;
+  color: #bbb;
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  text-align: right;
+}
+
+/* ===== Buttons (Bottom Row) ===== */
+.task-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+.task-buttons button {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+.task-buttons .complete-btn {
+  background: #22c55e;
+  color: white;
+}
+.task-buttons .archive-btn {
+  background: #fff;
+  color: #111;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ===== Archived Text ===== */
+.task-buttons p {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin: 0;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TaskFlow - Todo App</title>
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>TaskFlow</h1>
+    <div class="user-profile">
+      <span id="user-name"></span>
+      <img id="user-avatar" alt="Avatar" />
+      <button id="signout-btn">Sign Out</button>
+    </div>
+  </header>
+  <div class="app-wrapper">
+    <!-- Tabs -->
+    <nav class="stage-tabs">
+      <button class="tab active" data-stage="todo">Todo (<span id="count-todo">0</span>)</button>
+      <button class="tab" data-stage="completed">Completed (<span id="count-completed">0</span>)</button>
+      <button class="tab" data-stage="archived">Archived (<span id="count-archived">0</span>)</button>
+    </nav>
+
+    <!-- Task Input -->
+    <section class="task-input">
+      <input type="text" id="new-task" placeholder="Add your task..." />
+      <button id="add-task-btn">Submit</button>
+    </section>
+
+    <!-- Task List -->
+    <section class="task-list" id="task-list">
+      <!-- Task cards will be rendered here -->
+    </section>
+
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
