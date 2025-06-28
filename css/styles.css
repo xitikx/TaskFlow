@@ -1,0 +1,139 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
+  font-size: 15px;
+}
+
+/* Centering Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 2rem 1rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Logo and Title Section */
+.logo .icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.logo p {
+  margin: 0.2rem 0;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.logo .subnote {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-top: 0.25rem;
+}
+
+/* Card Box */
+.card {
+  background: rgba(60, 60, 60, 0.2);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(100, 100, 100, 0.5);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+.card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1.2rem;
+}
+
+/*  Form Styling  */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Label Styling */
+form label {
+  text-align: left;
+  display: block;
+  font-size: 0.85rem;
+  color: #ccc;
+  margin-bottom: 0.2rem;
+}
+
+/* Input Field Styling */
+form input {
+  padding: 0.65rem;
+  font-size: 0.95rem;
+  border: 1px solid rgba(100, 100, 100, 0.5);
+  border-radius: 8px;
+  outline: none;
+  background: rgba(60, 60, 60, 0.2);
+  color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  appearance: none; 
+}
+
+/* Date Field */
+#dob {
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+/* Align calendar icon next to date text */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.7;
+  margin-right: 283px;   
+  padding-left: 0;
+  position: relative;
+  left: -10px; 
+  top: 2px;          
+  cursor: pointer;
+}
+
+/* Button Gradient Styling */
+button {
+  padding: 0.7rem;
+  background: linear-gradient(90deg, #00c6ff, #7b2ff7);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Terms Text */
+.terms {
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-top: 1.25rem;
+  max-width: 420px;
+  padding: 0 1rem;
+}
