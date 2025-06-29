@@ -6,11 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.getElementById("user-name").textContent = userData.name;
-  document.getElementById(
-    "user-avatar"
-  ).src = `https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${encodeURIComponent(
-    userData.name
-  )}`;
+  document.getElementById("user-avatar").src = `https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${encodeURIComponent(userData.name)}`;
 
   document.getElementById("signout-btn").addEventListener("click", () => {
     localStorage.clear();
@@ -23,11 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const taskList = document.getElementById("task-list");
   const stageTabs = document.querySelectorAll(".tab");
   const searchInput = document.getElementById("search-task");
+  const priorityFilter = document.getElementById("priority-filter");
 
   let currentStage = "todo";
   let tasks = [];
 
-  // === Fetch or Load Tasks ===
   if (!localStorage.getItem("tasks")) {
     fetch("https://dummyjson.com/todos")
       .then((res) => res.json())
@@ -37,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
           text: todo.todo,
           stage: "todo",
           timestamp: new Date().toLocaleString(),
-          priority: "medium", // default priority for dummy data
+          priority: "medium",
         }));
         saveTasks();
         renderTasks();
@@ -58,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!text) return;
 
     const priority = priorityInput.value;
-
     const newTask = {
       id: Date.now(),
       text,
@@ -74,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   searchInput.addEventListener("input", renderTasks);
+  priorityFilter.addEventListener("change", renderTasks);
 
   stageTabs.forEach((tab) => {
     tab.addEventListener("click", () => {
@@ -87,9 +83,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderTasks() {
     taskList.innerHTML = "";
     const query = searchInput.value.toLowerCase();
+    const selectedPriority = priorityFilter.value;
+
     tasks
       .filter(
-        (t) => t.stage === currentStage && t.text.toLowerCase().includes(query)
+        (t) =>
+          t.stage === currentStage &&
+          t.text.toLowerCase().includes(query) &&
+          (selectedPriority === "all" || t.priority === selectedPriority)
       )
       .forEach((task) => renderTask(task));
     updateCounters();
@@ -99,12 +100,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const div = document.createElement("div");
     div.className = "task-item";
 
-    // ✅ Priority label
     if (task.priority) {
       const priorityLabel = document.createElement("span");
       priorityLabel.className = `priority-label ${task.priority}`;
-      priorityLabel.textContent =
-        "Priority: " + task.priority.charAt(0).toUpperCase() + task.priority.slice(1);
+      priorityLabel.textContent = "Priority: " + task.priority.charAt(0).toUpperCase() + task.priority.slice(1);
       div.appendChild(priorityLabel);
     }
 
@@ -115,10 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
     btnGroup.className = "task-buttons";
 
     if (task.stage === "todo") {
-      const completeBtn = createBtn(
-        "✔ Mark it as Completed",
-        "complete-btn",
-        () => moveTask(task.id, "completed")
+      const completeBtn = createBtn("✔ Mark it as Completed", "complete-btn", () =>
+        moveTask(task.id, "completed")
       );
       const archiveBtn = createBtn("📥 Archive", "archive-btn", () =>
         moveTask(task.id, "archived")
@@ -155,9 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function moveTask(id, newStage) {
     tasks = tasks.map((t) =>
-      t.id === id
-        ? { ...t, stage: newStage, timestamp: new Date().toLocaleString() }
-        : t
+      t.id === id ? { ...t, stage: newStage, timestamp: new Date().toLocaleString() } : t
     );
     saveTasks();
     renderTasks();

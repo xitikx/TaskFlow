@@ -21,7 +21,6 @@ body {
 }
 
 /* ===== Header ===== */
-/* ===== Header (Desktop Default) ===== */
 .app-header {
   width: 100vw;
   background-color: #0d1b2a;
@@ -34,48 +33,59 @@ body {
   left: 0;
   z-index: 100;
 }
-
 .app-header h1 {
   font-size: 1.4rem;
 }
-
 .user-profile {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
 .user-top {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .user-profile span {
   font-size: 0.9rem;
   white-space: nowrap;
 }
-
 .user-profile img {
   width: 34px;
   height: 34px;
   border-radius: 50%;
 }
-
 #signout-btn {
-  padding: 6px 12px;
-  background: #7b2ff7;
-  color: white;
+  position: relative;
+  background: transparent;
+  color: #fff;
   border: none;
-  border-radius: 6px;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
+  padding: 8px 16px;
   cursor: pointer;
+  overflow: hidden;
 }
 
+#signout-btn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 50%;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+#signout-btn:hover::after {
+  width: 100%;
+}
+
+
+/* ===== Search and Filter ===== */
 .task-search {
   margin-bottom: 1rem;
 }
-
 #search-task {
   width: 100%;
   padding: 10px;
@@ -88,8 +98,22 @@ body {
 #search-task::placeholder {
   color: #ccc;
 }
+#priority-filter {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: 1px solid rgba(100, 100, 100, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+#priority-filter option {
+  background: #111;
+  color: white;
+}
 
-
+/* ===== Priority Labels ===== */
 .priority-label {
   font-size: 0.75rem;
   padding: 4px 8px;
@@ -98,23 +122,18 @@ body {
   margin-bottom: 8px;
   font-weight: bold;
 }
-
 .priority-label.low {
   background: rgba(0, 255, 0, 0.2);
   color: #66ff66;
 }
-
 .priority-label.medium {
   background: rgba(255, 255, 0, 0.2);
   color: #ffdd57;
 }
-
 .priority-label.high {
   background: rgba(255, 0, 0, 0.2);
   color: #ff5c5c;
 }
-
-
 
 /* ===== Tabs ===== */
 .stage-tabs {
@@ -164,6 +183,20 @@ body {
 }
 #new-task::placeholder {
   color: #bbb;
+}
+#task-priority {
+  padding: 10px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: 1px solid rgba(100, 100, 100, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+  min-width: 110px;
+}
+#task-priority option {
+  background: #111;
+  color: white;
 }
 #add-task-btn {
   padding: 10px 20px;
@@ -285,42 +318,32 @@ body {
   }
 
   .task-input {
-  flex-direction: row;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: nowrap;
-  padding: 0.6rem 0.5rem;
-}
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 1rem;
+  }
 
-#new-task {
-  flex: 1;
-  font-size: 0.85rem;
-  padding: 8px;
-}
+  #new-task,
+  #task-priority,
+  #add-task-btn {
+    width: 100%;
+  }
 
-#add-task-btn {
-  font-size: 0.8rem;
-  padding: 8px 14px;
-  flex-shrink: 0;
-}
+  .task-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-top: 10px;
+  }
 
-.task-buttons {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  margin-top: 10px;
-}
-
-.task-buttons button {
-  width: auto;
-  max-width: 180px;
-  font-size: 0.78rem;
-  padding: 6px 12px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-
-
+  .task-buttons button {
+    width: auto;
+    max-width: 180px;
+    font-size: 0.78rem;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
 }
