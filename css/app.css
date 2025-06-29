@@ -11,6 +11,53 @@ body {
   min-height: 100vh;
   padding: 0;
   overflow-x: hidden;
+  animation: fadeInPage 0.6s ease-in-out;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInPage {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseClick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.96);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* ===== App Layout Container ===== */
@@ -18,6 +65,7 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   padding-top: 60px;
+  animation: fadeInPage 0.7s ease;
 }
 
 /* ===== Header ===== */
@@ -32,6 +80,7 @@ body {
   top: 0;
   left: 0;
   z-index: 100;
+  animation: fadeSlideUp 0.6s ease-in-out;
 }
 .app-header h1 {
   font-size: 1.4rem;
@@ -64,8 +113,8 @@ body {
   padding: 8px 16px;
   cursor: pointer;
   overflow: hidden;
+  transition: transform 0.2s;
 }
-
 #signout-btn::after {
   content: "";
   position: absolute;
@@ -76,38 +125,60 @@ body {
   background-color: #fff;
   transition: width 0.3s ease;
 }
-
 #signout-btn:hover::after {
   width: 100%;
 }
 
-
 /* ===== Search and Filter ===== */
 .task-search {
-  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
 }
-#search-task {
-  width: 100%;
-  padding: 10px;
+
+.search-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-group input {
+  position: relative;
+  width: 60%;
+  max-width: 420px;
+  padding: 10px 14px 10px 38px;
   font-size: 0.9rem;
-  border-radius: 6px;
-  border: 1px solid rgba(100, 100, 100, 0.4);
-  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
   color: #fff;
+  outline: none;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23ccc' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 20l-5.597-5.597A7.5 7.5 0 1 0 15 16.5L20.5 22 21 20zm-13-6.5a6 6 0 1 1 12 0 6 6 0 0 1-12 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 12px center;
+  background-size: 18px;
 }
-#search-task::placeholder {
+
+.search-group input::placeholder {
   color: #ccc;
 }
+
 #priority-filter {
-  margin-top: 10px;
-  width: 100%;
   padding: 10px;
   font-size: 0.9rem;
-  border-radius: 6px;
-  border: 1px solid rgba(100, 100, 100, 0.4);
-  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
   color: #fff;
+  backdrop-filter: blur(8px);
+  outline: none;
+  transition: all 0.3s ease;
 }
+
 #priority-filter option {
   background: #111;
   color: white;
@@ -144,6 +215,7 @@ body {
   padding: 8px;
   border-radius: 8px;
   gap: 8px;
+  animation: fadeInScale 0.5s ease-in;
 }
 .stage-tabs .tab {
   flex: 1;
@@ -171,6 +243,7 @@ body {
   padding: 12px;
   border-radius: 10px;
   margin-bottom: 20px;
+  animation: fadeInScale 0.5s ease-in-out;
 }
 #new-task {
   flex: 1;
@@ -211,6 +284,9 @@ body {
 #add-task-btn:hover {
   background: #1c7cff;
 }
+button:active {
+  animation: pulseClick 0.2s ease;
+}
 
 /* ===== Task List ===== */
 .task-list {
@@ -221,12 +297,22 @@ body {
 
 /* ===== Individual Task Card ===== */
 .task-item {
-  background: rgba(220, 220, 220, 0.1);
-  border: 1px solid rgba(160, 160, 160, 0.4);
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
   padding: 16px 20px;
   position: relative;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
+
+.task-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
 .task-item h3 {
   font-size: 1rem;
   font-weight: 500;
@@ -345,5 +431,10 @@ body {
     display: flex;
     align-items: center;
     gap: 6px;
+  }
+
+  .search-group input {
+    width: 90%;
+    padding-left: 36px;
   }
 }

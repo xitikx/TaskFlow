@@ -2,24 +2,24 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
-  overflow: hidden;
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   color: #fff;
   font-size: 15px;
+  overflow-x: hidden;
 }
 
 /* Centering Container */
 .container {
+  min-height: 100vh;
+  padding: 2rem 1rem 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  padding: 2rem 1rem;
-  text-align: center;
+  justify-content: flex-start;
   box-sizing: border-box;
+  text-align: center;
 }
 
 /* Logo and Title Section */
@@ -58,6 +58,8 @@ html, body {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
+  opacity: 0;
+  animation: fadeScaleUp 0.7s ease-out 0.4s forwards;
 }
 
 .card h2 {
@@ -65,7 +67,7 @@ html, body {
   margin-bottom: 1.2rem;
 }
 
-/*  Form Styling  */
+/* Form Styling */
 form {
   display: flex;
   flex-direction: column;
@@ -92,7 +94,7 @@ form input {
   color: #fff;
   width: 100%;
   box-sizing: border-box;
-  appearance: none; 
+  appearance: none;
 }
 
 /* Date Field */
@@ -101,19 +103,18 @@ form input {
   position: relative;
 }
 
-/* Align calendar icon next to date text */
+/* Calendar Icon Styling */
 input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
   opacity: 0.7;
-  margin-right: 283px;   
-  padding-left: 0;
+  margin-right: 283px;
   position: relative;
-  left: -10px; 
-  top: 2px;          
+  left: -10px;
+  top: 2px;
   cursor: pointer;
 }
 
-/* Button Gradient Styling */
+/* Button Styling */
 button {
   padding: 0.7rem;
   background: linear-gradient(90deg, #00c6ff, #7b2ff7);
@@ -136,4 +137,132 @@ button:hover {
   margin-top: 1.25rem;
   max-width: 420px;
   padding: 0 1rem;
+  opacity: 0;
+  animation: fadeInDelayed 1s ease 1s forwards;
+}
+
+/* Animations */
+@keyframes fadeSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeScaleUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInDelayed {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes buttonClickPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.94);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+button.clicked {
+  animation: buttonClickPulse 0.25s ease;
+}
+
+/* Logo Animation */
+.logo {
+  animation: fadeSlideDown 0.8s ease-out forwards;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  html, body {
+    font-size: 14px;
+    overflow: auto;
+  }
+
+  .container {
+    padding: 1.5rem 1rem;
+    justify-content: flex-start;
+  }
+
+  .logo .icon {
+    font-size: 2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .logo h1 {
+    font-size: 1.3rem;
+  }
+
+  .logo p {
+    font-size: 0.9rem;
+  }
+
+  .logo .subnote {
+    font-size: 0.75rem;
+  }
+
+  .card {
+    padding: 1.4rem 1rem;
+    margin-top: 1.5rem;
+    max-width: 92%;
+    margin-inline: auto;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(60, 60, 60, 0.25), rgba(100, 100, 100, 0.15));
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+  }
+
+  .card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  form input {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  button {
+    font-size: 0.95rem;
+    padding: 0.65rem;
+  }
+
+  .terms {
+    font-size: 0.7rem;
+    margin-top: 1rem;
+    padding: 0 0.5rem;
+    max-width: 92%;
+    margin-inline: auto;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    margin-right: auto;
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
