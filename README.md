@@ -1,4 +1,6 @@
 # 🚀 TaskFlow - A Beautifully Minimal Todo App
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit-blue?style=for-the-badge)](https://organize-your-tasks.netlify.app/)
+
 
 **TaskFlow** is a modern, visually appealing and responsive Todo application designed for productivity, organization, and ease-of-use. Built with simplicity and smooth UX in mind, TaskFlow allows users to manage tasks efficiently with categories like Todo, Completed, and Archived — all in a stunning glassmorphic UI.
 
