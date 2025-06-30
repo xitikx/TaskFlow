@@ -9,14 +9,12 @@
 This project fulfills the following assignment requirements:
 
 - [x] User login/logout functionality with persistent session
-- [x] Add new task with priority selection (Low / Medium / High)
 - [x] Categorize tasks into:
   - Todo
   - Completed
   - Archived
+- [x] User Avatar & Name Display** (with `ui-avatars.com`)
 - [x] Ability to move tasks between stages
-- [x] Search tasks by name
-- [x] Filter tasks by priority
 - [x] Task timestamp display
 - [x] Responsive UI for both desktop and mobile
 - [x] LocalStorage-based task persistence
@@ -26,24 +24,16 @@ This project fulfills the following assignment requirements:
 
 ## 🌟 Additional Features Incorporated
 
-- ✅ **Glassmorphism Card Design** for each task with hover shadows and blur
-- ✅ **Subtle Animations**:
-  - Fade-in on load
-  - Slide & scale effects on components
-- ✅ **User Avatar & Name Display** (with `ui-avatars.com`)
-- ✅ **Sign Out Button** with animated underline effect
-- ✅ **Improved Search Bar**:
-  - Centrally aligned
-  - Includes search icon
-- ✅ **Enhanced Priority Filter**:
-  - Styled dropdown
-  - Integrated into UI cleanly
-- ✅ **Mobile-Optimized** with responsive layouts and form stacking
+
+- ✅ **Add new task with priority selection (Low / Medium / High)**
+- ✅ **Search tasks by name**
+- ✅ **Filter tasks by priority**
 - ✅ **Modern UI Styling**:
   - Light gradients
   - Neumorphism-inspired touches
   - Consistent color palette
-- ✅ **Button Interactions** with click pulse animation
+- ✅ **Glassmorphism Card Design** for each task with hover shadows and blur
+- ✅ **Subtle Animations**
 
 ---
 
