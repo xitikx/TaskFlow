@@ -9,12 +9,14 @@
 This project fulfills the following assignment requirements:
 
 - [x] User login/logout functionality with persistent session
+- [x] Age verification using localStorage redirect logic
 - [x] Categorize tasks into:
   - Todo
   - Completed
   - Archived
 - [x] User Avatar & Name Display** (with `ui-avatars.com`)
 - [x] Ability to move tasks between stages
+- [x] Auto-fetch of sample tasks from DummyJSON API on first load
 - [x] Task timestamp display
 - [x] Responsive UI for both desktop and mobile
 - [x] LocalStorage-based task persistence
